@@ -1,0 +1,12 @@
+.idea/
+node_modules/
+dist/
+public/
+.*/
+*.iml
+webpack-assets.json
+webpack-stats.json
+npm-debug.log
+*.swp
+*.log
+*.bak
