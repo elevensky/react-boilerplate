@@ -9,7 +9,7 @@ export default class Home extends Component {
         <Helmet title="Home"/>
         <div>
           <div className="container">
-            home page
+            home page heehe
           </div>
         </div>
       </div>
