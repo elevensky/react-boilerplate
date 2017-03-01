@@ -9,19 +9,16 @@ const environment = {
   }
 }[process.env.NODE_ENV || 'development'];
 
-const APIHOST = 'localhost';
-const APIPORT = '9002';
-
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: process.env.PORT,
-  apiHost: APIHOST,
-  apiPort: APIPORT,
+  apiHost: process.env.APIHOST || 'localhost',
+  apiPort: process.env.APIPORT,
   app: {
-    title: 'React',
-    description: 'react boilerplate',
+    title: 'kaikai living',
+    description: '开开直播管理后台',
     head: {
-      titleTemplate: 'React | %s',
+      titleTemplate: '开开直播 | %s',
       meta: [
         {charset: 'utf-8'},
       ]

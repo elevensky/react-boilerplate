@@ -3,6 +3,7 @@ import session from 'express-session';
 import bodyParser from 'body-parser';
 import config from '../src/config';
 import * as actions from './actions/index';
+import {mapUrl} from 'utils/url.js';
 import PrettyError from 'pretty-error';
 import http from 'http';
 
@@ -12,44 +13,38 @@ const app = express();
 const server = new http.Server(app);
 
 app.use(session({
-  secret: 'react and redux rule!!!!',
+  secret: 'kaikai',
   resave: false,
   saveUninitialized: false,
   cookie: {maxAge: 60000}
 }));
 app.use(bodyParser.json());
 
-// 请求部门树
-app.get('/departments/tree', (req, res) => {
-  res.json(actions.departments.departmentsTree(req));
-});
-// 新增部门
-app.post('/departments', (req, res) => {
-  res.json(actions.departments.postDepartment(req));
-});
-// 修改部门信息
-app.put('/departments/:departmentId', (req, res) => {
-  res.json(actions.departments.putDepartment(req));
-});
+app.use((req, res) => {
+  const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
 
-// 请求部门的详细信息
-app.get('/departments/:departmentId', (req, res) => {
-  res.json(actions.departments.getDepartmentById(req));
-});
-app.delete('/departments/:departmentId', (req, res) => {
-  res.json(actions.departments.delDepartment(req));
-});
-// 请求部门岗位树
-app.get('/departments/:departmentId/positions/tree', (req, res) => {
-  res.json(actions.departments.getPositionsTree(req));
-});
-// 请求岗位下的员工
-app.get('/departments/:departmentId/positions/:positionId/employees', (req, res) => {
-  res.json(actions.departments.getEmployessByPosition(req));
-});
+  const {action, params} = mapUrl(actions, splittedUrlPath);
 
-const bufferSize = 100;
-const messageBuffer = new Array(bufferSize);
+  if (action) {
+    action(req, params)
+      .then((result) => {
+        if (result instanceof Function) {
+          result(res);
+        } else {
+          res.json(result);
+        }
+      }, (reason) => {
+        if (reason && reason.redirect) {
+          res.redirect(reason.redirect);
+        } else {
+          console.error('API ERROR:', pretty.render(reason));
+          res.status(reason.status || 500).json(reason);
+        }
+      });
+  } else {
+    res.status(404).end('NOT FOUND');
+  }
+});
 
 if (config.apiPort) {
   const runnable = app.listen(config.apiPort, (err) => {
