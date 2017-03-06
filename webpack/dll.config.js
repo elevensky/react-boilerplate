@@ -35,36 +35,34 @@ module.exports = {
     postfixes: [],
   },
 
-  plugins: (() => {
-    const plugins = [
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb|zh-cn/),
-      new webpack.DllPlugin({
-        /**
-         * path
-         * 定义 manifest 文件生成的位置
-         * [name]的部分由entry的名字替换
-         */
-        path: path.join(assetsPath, '[name]-manifest.json'),
-        /**
-         * name
-         * dll bundle 输出到那个全局变量上
-         * 和 output.library 一样即可。
-         */
-        name: '[name]_library'
-      }),
-    ];
+  plugins: [
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb|zh-cn/),
+    new webpack.DllPlugin({
+      /**
+       * path
+       * 定义 manifest 文件生成的位置
+       * [name]的部分由entry的名字替换
+       */
+      path: path.join(assetsPath, '[name]-manifest.json'),
+      /**
+       * name
+       * dll bundle 输出到那个全局变量上
+       * 和 output.library 一样即可。
+       */
+      name: '[name]_library'
+    }),
 
-    // production open optimizations
-    if (process.env.NODE_ENV === 'production') {
-      plugins.push(
-        new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false
-          }
-        })
-      );
-    }
-  })()
+    //   // production open optimizations
+    //   if (process.env.NODE_ENV === 'production') {
+    //     plugins.push(
+    //       new webpack.optimize.DedupePlugin(),
+    //       new webpack.optimize.OccurenceOrderPlugin(),
+    //       new webpack.optimize.UglifyJsPlugin({
+    //         compress: {
+    //           warnings: false
+    //         }
+    //       })
+    //     );
+    //   }
+  ]
 };
