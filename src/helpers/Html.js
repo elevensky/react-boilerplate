@@ -48,6 +48,8 @@ export default class Html extends Component {
           {Object.keys(assets.javascript).map((script, key) =>
             <script src={assets.javascript[script]} key={key} charSet="UTF-8"/>
           )}
+          <script src="./dist/social-share.js"></script>
+          <script src="./dist/qrcode.js"></script>
         </body>
       </html>
     );
