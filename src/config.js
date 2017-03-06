@@ -18,7 +18,7 @@ module.exports = Object.assign({
     title: 'kaikai living',
     description: '开开直播管理后台',
     head: {
-      titleTemplate: '开开直播 | %s',
+      titleTemplate: '%s | 开开直播',
       meta: [
         {charset: 'utf-8'},
       ]

@@ -1,7 +1,7 @@
 export default function loadAuth(req) {
   return Promise.resolve({
     retval: 'ok',
-    retinfo: { user: req.session.user },
+    retinfo: req.session.user ? req.session.user : null,
     reterr: '',
   });
 }

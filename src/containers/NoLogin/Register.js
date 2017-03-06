@@ -8,6 +8,8 @@ const Option = Select.Option;
 
 import * as authActions from 'redux/modules/auth';
 import './NoLogin.less';
+const phoneImage = require('./phone.svg');
+const lockImage = require('./lock.svg');
 
 @connect(state => ({user: state.auth.user}), authActions)
 class RegistrationForm extends React.Component {
@@ -108,7 +110,7 @@ class RegistrationForm extends React.Component {
               ],
               validateTrigger: 'onBlur',
             })(
-              <Input addonBefore={<Icon type="mobile" />} placeholder="手机号" />
+              <Input prefix={<img src={phoneImage} />} placeholder="手机号" />
             )}
           </FormItem>
           <FormItem style={{marginBottom: '10'}}>
@@ -147,7 +149,7 @@ class RegistrationForm extends React.Component {
                 validator: this.checkConfirm,
               }],
             })(
-              <Input type="password" addonBefore={<Icon type="lock" />} onBlur={this.handlePasswordBlur} placeholder="密码" />
+              <Input type="password" prefix={<img src={lockImage} />} onBlur={this.handlePasswordBlur} placeholder="密码" />
             )}
           </FormItem>
           <FormItem>
@@ -158,7 +160,7 @@ class RegistrationForm extends React.Component {
                 validator: this.checkPassword,
               }],
             })(
-              <Input type="password" placeholder="确认密码" addonBefore={<Icon type="lock" />} />
+              <Input type="password" placeholder="确认密码" prefix={<img src={lockImage} />} />
             )}
           </FormItem>
           { false &&

@@ -7,6 +7,8 @@ const FormItem = Form.Item;
 
 import * as authActions from 'redux/modules/auth';
 import './NoLogin.less';
+const phoneImage = require('./phone.svg');
+const lockImage = require('./lock.svg');
 
 @connect(state => ({user: state.auth.user}), authActions)
 class NormalLoginForm extends React.Component {
@@ -53,16 +55,16 @@ class NormalLoginForm extends React.Component {
                 validator: this.checkPhone,
               }
             ],
-            trigger: 'onBlur',
+            validateTrigger: 'onBlur',
           })(
-            <Input addonBefore={<Icon type="mobile" />} placeholder="用户名" />
+            <Input prefix={<img src={phoneImage} />} placeholder="用户名" />
           )}
         </FormItem>
         <FormItem style={{marginBottom: '5'}}>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: '请输入密码！' }],
           })(
-            <Input addonBefore={<Icon type="lock" />} type="password" placeholder="密码" />
+            <Input prefix={<img src={lockImage} />} type="password" placeholder="密码" />
           )}
         </FormItem>
         <FormItem>

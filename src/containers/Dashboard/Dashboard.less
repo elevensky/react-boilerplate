@@ -1,8 +1,24 @@
 #dashboard {
-  .header, .logo {
+  height: 100vh;
+  padding-top: 64px;
+  background-color: #dce0e9;
+  .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 64px;
+    line-height: 64px;
+    padding: 0 20px;
     background-color: #333c50;
   }
-  .ant-layout-sider {
+  .sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100vh;
+    top: 0;
+    margin-top: 64px;
+    overflow-y: auto;
     background-color: #394258;
     .btn-create {
       button {
@@ -11,12 +27,20 @@
         width: 120px;
         height: 40px;
         margin: 20px 0;
+        line-height: 30px;
+      }
+      img {
+        margin:3px 5px 0 0;
+        float: left;
       }
     }
     .ant-menu {
-      background: none;
+      background: #394258;
       .ant-menu-submenu-title {
         background-color: #333b50;
+        font-size: 14px;
+      }
+      .ant-menu-item a {
         font-size: 14px;
       }
     }
@@ -24,5 +48,73 @@
       background: none;
       background-image: linear-gradient(to left, rgba(91, 121, 229, 0.0), #5c79e5);
     }
+  }
+  .main-body {
+    margin: 20px 20px 0 220px;
+    .wrap-box {
+      background: #FFF;
+      border-radius: 10px;
+    }
+    .wrap-box-title {
+      height: 60px;
+      padding: 0 20px;
+      font-size: 18px;
+      background: #FFF;
+      font-weight: 400;
+      border-radius: 10px 10px 0 0;
+      .title {
+        line-height: 60px;
+      }
+    }
+  }
+}
+
+.global-search {
+  width: 300px;
+  height: 40px;
+  .ant-input {
+    height: 30px;
+    padding: 11px 12px;
+  }
+
+  .ant-select-selection__placeholder {
+    top: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .ant-select-selection--single {
+    margin-right: -50px;
+  }
+
+  .ant-input-preSuffix-wrapper .ant-input:not(:last-child) {
+    padding-right: 62px;
+  }
+
+  .ant-input-preSuffix-wrapper .ant-input-suffix {
+    right: 0;
+  }
+
+  .ant-input-preSuffix-wrapper .ant-input-suffix button {
+    padding-top: 1px;
+    padding-bottom: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .search-btn {
+    font-size: 18px;
+  }
+  .global-search-item-count {
+    position: absolute;
+    right: 16px;
+  }
+}
+
+.my-living {
+  .ant-table {
+    font-size: 14px;
+  }
+  .ant-pagination {
+    margin-right: 20px;
   }
 }

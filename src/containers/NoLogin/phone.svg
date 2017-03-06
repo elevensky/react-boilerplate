@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="24px" viewBox="0 0 16 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>phone</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10.7096158,19.9886845 L1.28939844,19.9886845 C0.588315949,19.9886845 0.0188932068,19.3980383 0.0188932068,18.6726268 L0.0188932068,1.32601072 C0.0188932068,0.599331099 0.588295146,0.00868492018 1.28939844,0.00868492018 L10.7096157,0.00868492018 C11.4094913,0.00868492018 11.9788932,0.599331078 11.9788932,1.32601072 L11.9788932,18.6726053 C11.9788932,19.3980168 11.4094913,19.9886845 10.7096158,19.9886845 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-1" y="-1" width="13.96" height="21.9799995">
+            <rect x="-0.981106793" y="-0.99131508" width="13.96" height="21.9799995" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+        <path d="M6.01885353,17.3204146 C5.74278967,17.3204146 5.51885353,17.0960393 5.51885353,16.8204146 C5.51885353,16.5447899 5.74278967,16.3204146 6.01885353,16.3204146 C6.29491738,16.3204146 6.51885353,16.5447899 6.51885353,16.8204146 C6.51885353,17.0960393 6.29491738,17.3204146 6.01885353,17.3204146 Z" id="path-3"></path>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-0.8" y="-0.8" width="2.6" height="2.6">
+            <rect x="4.71885353" y="15.5204146" width="2.6" height="2.6" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+        <path d="M10.815866,14.429391 L1.18410888,14.429391 C1.00008087,14.429391 0.849998474,14.2923488 0.849998474,14.1229917 L0.849998474,1.7257901 C0.849998474,1.55643299 1.00008087,1.4193908 1.18410888,1.4193908 L10.8158883,1.4193908 C10.9999163,1.4193908 11.1499987,1.55643299 11.1499987,1.7257901 L11.1499987,14.1229917 C11.1499764,14.2923488 10.999894,14.429391 10.815866,14.429391 Z" id="path-5"></path>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="10.3000002" height="13.0100002" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-101.000000, -298.000000)" fill-rule="nonzero" stroke="#4A4E58">
+            <g id="手机" transform="translate(103.000000, 300.000000)">
+                <g id="Group">
+                    <use id="Shape" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                    <use id="Shape" mask="url(#mask-4)" stroke-width="1.6" xlink:href="#path-3"></use>
+                    <use id="Shape" mask="url(#mask-6)" stroke-width="2" xlink:href="#path-5"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

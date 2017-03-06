@@ -30,8 +30,12 @@ export default class Header extends Component {
   }
 
   render() {
+    const logoImage = require('./logo.svg');
     return (
       <div className="header clearfix">
+        <div className="logo pull-left cf-white">
+          <Link to="/"><img src={logoImage} alt="logo" /></Link>
+        </div>
         <div className="user-bar pull-right mr20">
           <span className="cf-white">{this.props.user && this.props.user.name}</span>
           <span className="cf-white mr5 ml5"> | </span>

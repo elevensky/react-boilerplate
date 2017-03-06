@@ -7,6 +7,7 @@ body, html {
 
 html body {
   font-size: 14px;
+  color: #4b4e58;
 }
 
 .f12 {
@@ -33,8 +34,8 @@ html body {
 .pa { position: absolute; }
 
 .text-left   { text-align: left; }
-.text-center { text-align: center; }
-.text-right  { text-align: right; }
+.text-center { text-align: center !important; }
+.text-right  { text-align: right !important; }
 
 .bg-white {background: #FFF;}
 
@@ -57,9 +58,13 @@ html body {
 .pd20 { padding: 20px; }
 .pl20 { padding-left: 20px; }
 
-.footer {
-  p {
-    line-height: 30px;
+.header {
+  .logo a {
+    display: block;
+    line-height: 64px;
+    img {
+      vertical-align: middle;
+    }
   }
 }
 

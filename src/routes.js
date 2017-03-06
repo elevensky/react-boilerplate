@@ -3,6 +3,7 @@ import {IndexRoute, Route} from 'react-router';
 import App from './containers/App/App';
 import NoLoginLayOut from './containers/App/NoLoginLayOut';
 import Dashboard from './containers/Dashboard/Dashboard';
+import MyLiving from './containers/MyLiving/';
 import Login from './containers/NoLogin/Login';
 import Register from './containers/NoLogin/Register';
 import Forgot from './containers/NoLogin/Forgot';
@@ -53,7 +54,10 @@ export default (store) => {
       </Route>
 
       // auth route
-      <Route path="/" component={Dashboard} onEnter={requireLogin} />
+      <Route path="/" component={Dashboard} onEnter={requireLogin}>
+        <IndexRoute component={MyLiving}/>
+        <Route path="login" component={Login} />
+      </Route>
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />
     </Route>
