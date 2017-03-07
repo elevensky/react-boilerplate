@@ -45,12 +45,16 @@ export default class MyLiving extends Component {
 
   shareLive(event, record) {
     event.preventDefault();
-    this.setState({visible: true}, function() {
-      window.socialShare('#share-box', {
-        url: record.url,
-        title: record.title,
-        description: record.description,
-        sites: ['qzone', 'qq', 'weibo', 'wechat'],
+    const _self = this;
+    require.ensure([], function(require) {
+      require('./social-share.js');
+      _self.setState({visible: true}, function() {
+        window.socialShare('#share-box', {
+          url: record.url,
+          title: record.title,
+          description: record.description,
+          sites: ['qzone', 'qq', 'weibo', 'wechat'],
+        });
       });
     });
   }

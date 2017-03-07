@@ -1,5 +1,4 @@
 webpack/*
 karma.conf.js
 tests.webpack.js
-src/containers/MyLiving/social-share.js
-src/containers/MyLiving/qrcode.js.js
+# src/containers/MyLiving/social-share.js
