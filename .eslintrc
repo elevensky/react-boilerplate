@@ -5,7 +5,7 @@
     "mocha": true
   },
   "rules": {
-    "new-cap": [2, { "capIsNewExceptions": ["List", "Map", "Set", "Record"] }],
+    "new-cap": 0,
     "react/no-multi-comp": 0,
     "import/default": 0,
     "import/no-duplicates": 0,
@@ -28,7 +28,7 @@
     "react/sort-comp": 0,
     "id-length": 0,
     "no-new": 0,
-    "new-cap": 0
+    "no-script-url": 0
   },
   "plugins": [
     "react", "import"

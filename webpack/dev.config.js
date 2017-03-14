@@ -101,6 +101,8 @@ module.exports = {
     extensions: ['', '.json', '.js', '.jsx']
   },
   plugins: [
+    // new webpack.optimize.CommonsChunkPlugin('vendor', `common.js`, Infinity),
+    // new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-gb|zh-cn/),
     new webpack.DllReferencePlugin({
       context: process.cwd(),
       // 在这里引入 manifest 文件

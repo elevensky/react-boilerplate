@@ -15,6 +15,8 @@ module.exports = {
       'react-motion',
       'react-redux',
       'react-router',
+      'react-router-redux',
+      'react-helmet',
       'redux',
     ]
   },

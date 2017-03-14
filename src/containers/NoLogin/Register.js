@@ -113,7 +113,7 @@ class RegistrationForm extends React.Component {
               <Input prefix={<img src={phoneImage} />} placeholder="手机号" />
             )}
           </FormItem>
-          <FormItem style={{marginBottom: '10'}}>
+          <FormItem style={{marginBottom: '10px'}}>
             <Row gutter={8}>
               <Col span={14}>
                 <Input size="large" onChange={(e) => this.setState({imgCode: e.target.value})} placeholder="验证码" />
@@ -164,7 +164,7 @@ class RegistrationForm extends React.Component {
             )}
           </FormItem>
           { false &&
-          <FormItem style={{ marginBottom: '10' }}>
+          <FormItem style={{ marginBottom: '10px' }}>
             {getFieldDecorator('agreement', {
               rules: [{ required: true, message: '必须遵守公司条款' }],
               valuePropName: 'checked',

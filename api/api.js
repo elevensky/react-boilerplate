@@ -19,8 +19,51 @@ app.use(session({
   cookie: {maxAge: 60000}
 }));
 app.use(bodyParser.json());
-
+app.use('/templates/:id', (req, res) => {
+  console.log(req.params.id);
+  res.json({
+    retval: 'ok',
+    retinfo: {
+      id: '1111',
+      name: '基础模板',
+      moduls: {
+        base: {
+          name: '信息编辑',
+          items: {
+            title: '标题',
+            address: '地址'
+          }
+        },
+        audience_interaction: {
+          name: '信息编辑',
+          items: {
+            list: '聊天列表',
+            red_envelopes: '红包',
+            address: '地址'
+          }
+        },
+        meun: {
+          name: '菜单管理',
+          items: {
+            menu1: '简介',
+            menu2: '互动',
+            menu3: '榜单',
+            custom: '自定义菜单'
+          }
+        },
+        live: {
+          name: '直播功能',
+          items: {
+            menu1: '观看限制',
+          }
+        }
+      }
+    },
+    reterr: '',
+  });
+});
 app.use((req, res) => {
+  console.log(req.url);
   const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);
 
   const {action, params} = mapUrl(actions, splittedUrlPath);

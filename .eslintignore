@@ -1,4 +1,4 @@
 webpack/*
 karma.conf.js
 tests.webpack.js
-# src/containers/MyLiving/social-share.js
+src/containers/MyLive/social-share.js

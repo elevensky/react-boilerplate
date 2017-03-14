@@ -86,7 +86,7 @@ class RegistrationForm extends React.Component {
               <Input addonBefore={<Icon type="mobile" />} onBlur={this.authPhone} placeholder="手机号" />
             )}
           </FormItem>
-          <FormItem style={{marginBottom: '10'}}>
+          <FormItem style={{marginBottom: '10px'}}>
             <Row gutter={8}>
               <Col span={15}>
                 <Input size="large" onChange={(e) => this.setState({imgCode: e.target.value})} placeholder="验证码" />

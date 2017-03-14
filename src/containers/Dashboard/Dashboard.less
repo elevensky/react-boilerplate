@@ -2,6 +2,14 @@
   height: 100vh;
   padding-top: 64px;
   background-color: #dce0e9;
+  &.nomenu {
+    .sidebar {
+      display: none;
+    }
+    .main-body {
+      margin: 20px 40px;
+    }
+  }
   .header {
     position: fixed;
     left: 0;
@@ -11,6 +19,7 @@
     line-height: 64px;
     padding: 0 20px;
     background-color: #333c50;
+    z-index: 99;
   }
   .sidebar {
     position: fixed;
@@ -39,6 +48,14 @@
       .ant-menu-submenu-title {
         background-color: #333b50;
         font-size: 14px;
+        margin: 10px 0;
+
+        a {
+          color: rgba(255, 255, 255, 0.67);
+          &:hover {
+            color: #FFF;
+          }
+        }
       }
       .ant-menu-item a {
         font-size: 14px;
@@ -52,20 +69,30 @@
   .main-body {
     margin: 20px 20px 0 220px;
     .wrap-box {
-      background: #FFF;
       border-radius: 10px;
     }
-    .wrap-box-title {
-      height: 60px;
-      padding: 0 20px;
-      font-size: 18px;
+    .wrap-box-body {
       background: #FFF;
-      font-weight: 400;
-      border-radius: 10px 10px 0 0;
-      .title {
-        line-height: 60px;
-      }
+      margin-bottom: 20px;
+      padding-bottom: 40px;
     }
+  }
+  .ant-table-thead > tr > th {
+    color: #4b4e58;
+  }
+}
+.wrap-box-title {
+  height: 60px;
+  padding: 0 20px;
+  font-size: 18px;
+  background: #FFF;
+  font-weight: 400;
+  border-radius: 10px 10px 0 0;
+  .title {
+    line-height: 60px;
+  }
+  &.bg-gray {
+    background-color: #f4f6fb;
   }
 }
 
@@ -107,5 +134,12 @@
   .global-search-item-count {
     position: absolute;
     right: 16px;
+  }
+}
+
+// editor reset
+.editor-container {
+  .ant-form-item-control {
+    line-height: 1;
   }
 }

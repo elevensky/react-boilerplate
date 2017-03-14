@@ -9,24 +9,19 @@ import { Button, Modal, Table, Input, Icon } from 'antd';
 import * as liveActions from 'redux/modules/live';
 import './index.less';
 
-const data = [{
-  key: '1',
-  url: 'http://easylive.com/index',
-  id: '1202111',
-  cover: 'http://wx1.sinaimg.cn/large/40a9031aly1fd8pk2nvk6j20gg088dgo.jpg',
-  title: '我要去追赶夏天的萤火虫',
-  times: '100万',
-  start_time: '2017-2-28 18:36',
-  status: '直播中'
-}];
-
+@asyncConnect([{
+  promise: ({store: {dispatch, getState}}) => {
+    return dispatch(liveActions.getLives());
+  }
+}])
 @connect(
-  (state) => ({live: state.live}),
+  (state) => ({ lives: state.live.lives }),
   liveActions)
 export default class MyLiving extends Component {
   state = { visible: false }
   showModal = () => {
     this.setState({
+      searchword: '',
       visible: true,
     });
   }
@@ -60,10 +55,13 @@ export default class MyLiving extends Component {
   }
 
   render() {
+    const { searchword } = this.state;
+
     const columns = [{
       title: '直播标题',
       dataIndex: 'title',
       key: 'title',
+      render: (text, record) => <Link to={`/lives/${record.id}`}>{text}</Link>
     }, {
       title: '观看次数',
       dataIndex: 'times',
@@ -85,12 +83,13 @@ export default class MyLiving extends Component {
           <a onClick={(event) => this.shareLive(event, record)} className="mr10"><Icon type="export" /> 分享</a>
           <a href="#" className="mr10"><Icon type="eye-o" /> 观看</a>
           <a href="#" className="mr10"><Icon type="pie-chart" /> 统计</a>
-          <a href="#"><Icon type="close-circle-o" /> 关闭直播</a>
+          <a href="#"><Icon type="close-circle-o" /> 关闭</a>
         </span>
       ),
     }];
+    const suffix = searchword ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
     return (
-      <div className="my-living wrap-box">
+      <div className="my-lives wrap-box">
         <Helmet title="我的直播"/>
         <Modal title="分享"
                visible={this.state.visible}
@@ -117,7 +116,9 @@ export default class MyLiving extends Component {
             />
           </div>
         </div>
-        <Table columns={columns} dataSource={data} />
+        <div className="wrap-box-body">
+          <Table columns={columns} dataSource={this.props.lives.toJS()} />
+        </div>
       </div>
     );
   }

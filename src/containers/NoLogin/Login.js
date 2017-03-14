@@ -11,7 +11,7 @@ const phoneImage = require('./phone.svg');
 const lockImage = require('./lock.svg');
 
 @connect(state => ({user: state.auth.user}), authActions)
-class NormalLoginForm extends React.Component {
+class NormalLoginForm extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired
@@ -60,7 +60,7 @@ class NormalLoginForm extends React.Component {
             <Input prefix={<img src={phoneImage} />} placeholder="用户名" />
           )}
         </FormItem>
-        <FormItem style={{marginBottom: '5'}}>
+        <FormItem style={{marginBottom: '5px'}}>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: '请输入密码！' }],
           })(
@@ -75,7 +75,7 @@ class NormalLoginForm extends React.Component {
             <Checkbox>记住我</Checkbox>
           )}
           <Link to="/forgot" className="login-form-forgot pull-right">忘记密码</Link>
-          <Button type="primary" htmlType="submit" style={{width: '100%', marginTop: '10'}}>
+          <Button type="primary" htmlType="submit" style={{width: '100%', marginTop: '10px'}}>
             登陆
           </Button>
           <div className="nologin-tip-box mt10 text-center">没有账号，<Link to="/register">立即注册</Link></div>
