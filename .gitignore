@@ -1,6 +1,7 @@
 .idea/
 node_modules/
-dist/
+build
+dist
 public/
 .*/
 *.iml
