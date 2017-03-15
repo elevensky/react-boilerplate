@@ -17,7 +17,7 @@ import './index.less';
 @connect(
   (state) => ({ lives: state.live.lives }),
   liveActions)
-export default class MyLiving extends Component {
+export default class Lives extends Component {
   state = { visible: false }
   showModal = () => {
     this.setState({

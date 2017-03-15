@@ -3,7 +3,6 @@ export loadAuth from './loadAuth';
 export login from './login';
 export logout from './logout';
 export * as widget from './widget/index';
-export * as departments from './departments/index';
 
 // 验证手机号错误接口
 export function check_phone(req) {
