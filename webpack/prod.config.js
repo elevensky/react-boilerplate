@@ -9,7 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var strip = require('strip-loader');
 
 var projectRootPath = path.resolve(__dirname, '../');
-var assetsPath = path.resolve(projectRootPath, './static/dist');
+var assetsPath = path.resolve(projectRootPath, './build/static');
 
 // https://github.com/halt-hammerzeit/webpack-isomorphic-tools
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
@@ -34,6 +34,7 @@ module.exports = {
       { test: /\.jsx?$/, exclude: /node_modules/, loaders: [strip.loader('debug'), 'babel']},
       { test: /\.json$/, loader: 'json-loader' },
       { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css!autoprefixer?browsers=last 2 version!less') },
+      { test: /\.html$/, loader: 'html-loader'},
       /*
       { test: /\.less$/, loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=2&sourceMap!autoprefixer?browsers=last 2 version!less?outputStyle=expanded&sourceMap=true&sourceMapContents=true') },
       */
@@ -55,7 +56,15 @@ module.exports = {
     extensions: ['', '.json', '.js', '.jsx']
   },
   plugins: [
-    new CleanPlugin([assetsPath], { root: projectRootPath }),
+    new CleanPlugin([assetsPath], {
+      root: projectRootPath,
+      exclude: ['vendor.dll.js', 'vendor-manifest.json']
+    }),
+    new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      // 在这里引入 manifest 文件
+      manifest: require(path.join(process.cwd(), './build/static/vendor-manifest.json'))
+    }),
 
     // css files from the extract-text-plugin loader
     new ExtractTextPlugin('[name]-[chunkhash].css', {allChunks: true}),
@@ -70,7 +79,8 @@ module.exports = {
       __DEVTOOLS__: false
     }),
     new HtmlWebpackPlugin({
-      template: '../index.html',
+      filename: '../index.html',
+      template: path.resolve(projectRootPath, './index.html'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,

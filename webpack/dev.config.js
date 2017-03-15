@@ -4,7 +4,7 @@ require('babel-polyfill');
 var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
-var assetsPath = path.resolve(__dirname, '../static/dist');
+var assetsPath = path.resolve(__dirname, '../build/static');
 var host = (process.env.HOST || 'localhost');
 var port = (+process.env.PORT + 1) || 3001;
 
@@ -106,7 +106,7 @@ module.exports = {
     new webpack.DllReferencePlugin({
       context: process.cwd(),
       // 在这里引入 manifest 文件
-      manifest: require(path.join(process.cwd(), './static/dist/vendor-manifest.json'))
+      manifest: require(path.join(process.cwd(), './build/static/vendor-manifest.json'))
     }),
     // hot reload
     new webpack.HotModuleReplacementPlugin(),

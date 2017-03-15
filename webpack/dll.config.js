@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const assetsPath = path.resolve(__dirname, '../static/dist');
+const assetsPath = path.resolve(__dirname, '../build/static');
 
 module.exports = {
   entry: {
