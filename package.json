@@ -31,10 +31,14 @@
     "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc src api",
     "start-dev": "better-npm-run start-dev",
+    "start-local": "better-npm-run start-local",
     "start-dev-api": "better-npm-run start-dev-api",
-    "watch-client": "better-npm-run watch-client",
+    "start-local-api": "better-npm-run start-local-api",
+    "watch-client-local": "better-npm-run watch-client-local",
+    "watch-client-dev": "better-npm-run watch-client-dev",
     "build:dll": "webpack --display-chunks --color --config webpack/dll.config.js",
-    "dev": "concurrent --kill-others \"npm run watch-client\" \"npm run start-dev\" \"npm run start-dev-api\"",
+    "local": "concurrent --kill-others \"npm run watch-client-local\" \"npm run start-local\" \"npm run start-local-api\"",
+    "dev": "concurrent --kill-others \"npm run watch-client-dev\" \"npm run start-dev\" \"npm run start-dev-api\"",
     "test": "karma start",
     "test-node": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register",
     "test-node-watch": "./node_modules/mocha/bin/mocha $(find api -name '*-test.js') --compilers js:babel-core/register --watch"
@@ -57,6 +61,23 @@
         "APIPORT": 7030
       }
     },
+    "start-local": {
+      "command": "node ./bin/server.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "localhost",
+        "PORT": 7000,
+        "APIPORT": 7030
+      }
+    },
+    "start-local-api": {
+      "command": "node ./bin/api.js",
+      "env": {
+        "NODE_PATH": "./api",
+        "NODE_ENV": "localhost",
+        "APIPORT": 7030
+      }
+    },
     "start-dev": {
       "command": "node ./bin/server.js",
       "env": {
@@ -75,11 +96,21 @@
         "APIPORT": 7030
       }
     },
-    "watch-client": {
+    "watch-client-local": {
       "command": "node webpack/webpack-dev-server.js",
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
+        "PORT": 7000,
+        "APIPORT": 7030
+      }
+    },
+    "watch-client-dev": {
+      "command": "node webpack/webpack-dev-server.js",
+      "env": {
+        "UV_THREADPOOL_SIZE": 100,
+        "NODE_PATH": "./src",
+        "HOST": "123.57.40.185",
         "PORT": 7000,
         "APIPORT": 7030
       }

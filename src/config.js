@@ -1,11 +1,17 @@
 require('babel-polyfill');
 
 const environment = {
+  localhost: {
+    isProduction: false,
+    apiHost: 'localhost',
+    apiPort: process.env.APIPORT,
+    imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
+  },
   development: {
     isProduction: false,
     apiHost: 'dev.easyvaas.com/user/yangguozhi/kkuser',
     apiPort: process.env.APIPORT,
-    // 图片验证码url
+    host: '123.57.40.185',
     imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
   },
   production: {
@@ -14,7 +20,7 @@ const environment = {
     apiPort: process.env.APIPORT,
     imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
   }
-}[process.env.NODE_ENV || 'development'];
+}[process.env.NODE_ENV || 'localhost'];
 
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
