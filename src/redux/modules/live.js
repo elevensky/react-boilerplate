@@ -41,7 +41,7 @@ export default function liveReducer(state = initialState, action) {
 export function getLives() {
   return {
     type: FETCH_LIVES,
-    promise: (client) => client.get('/lives')
+    promise: (client) => client.get('/lives', 'local')
   };
 }
 

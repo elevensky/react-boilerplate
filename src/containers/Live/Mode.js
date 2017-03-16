@@ -39,7 +39,7 @@ export default class LiveWay extends Component {
             <TabPane tab="专业设备直播" key="1">
               <div className="pd20">
                 <p className="mb20" style={{margin: '30px 0'}}>请选择直播设备</p>
-                <Select defaultValue="pushstream" style={{ width: 120 }} onChange={this.handleChange}>
+                <Select defaultValue="pushstream" style={{ width: '120px' }} onChange={this.handleChange}>
                   <Option value="pushstream">推流直播</Option>
                   <Option value="camera">摄影机</Option>
                 </Select>
@@ -51,7 +51,7 @@ export default class LiveWay extends Component {
                   <FormItem
                   label="请输入拉流地址"
                   >
-                    <Input style={{width: '320'}} onChange={this.handlePullStreamChange}/>
+                    <Input style={{width: '320px'}} onChange={this.handlePullStreamChange}/>
                   </FormItem>
                 </Form>
               </div>
@@ -62,7 +62,7 @@ export default class LiveWay extends Component {
                   <FormItem
                   label="请在直播工具中输入以下推流地址"
                   >
-                    <Input style={{width: '320', marginRight: '10'}} onChange={(e) => { this.setState({desktopLiveUrl: e.target.value}); }}/>
+                    <Input style={{width: '320px', marginRight: '10px'}} onChange={(e) => { this.setState({desktopLiveUrl: e.target.value}); }}/>
                     <CopyToClipboard text={this.state.desktopLiveUrl}
                       onCopy={() => { message.success('已复制到剪切板');}}
                     >
@@ -78,7 +78,7 @@ export default class LiveWay extends Component {
                   <FormItem
                   label="请在直播工具中输入以下推流地址"
                   >
-                   <Input style={{width: '320', marginRight: '10'}} onChange={(e) => { this.setState({mobileLiveUrl: e.target.value}); }}/>
+                   <Input style={{width: '320px', marginRight: '10px'}} onChange={(e) => { this.setState({mobileLiveUrl: e.target.value}); }}/>
                     <CopyToClipboard text={this.state.mobileLiveUrl}
                       onCopy={() => { message.success('已复制到剪切板');}}
                     >

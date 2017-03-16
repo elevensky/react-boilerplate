@@ -6,6 +6,7 @@ import { Alert, Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox
 const FormItem = Form.Item;
 const Option = Select.Option;
 
+import config from '../../config';
 import * as authActions from 'redux/modules/auth';
 import './NoLogin.less';
 const phoneImage = require('./phone.svg');
@@ -119,7 +120,7 @@ class RegistrationForm extends React.Component {
                 <Input size="large" onChange={(e) => this.setState({imgCode: e.target.value})} placeholder="验证码" />
               </Col>
               <Col span={10} className="text-right">
-                <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488436139062&di=9c24b3dc45d536a26f37a77b839515f1&imgtype=0&src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F822721%2F201607%2F822721-20160720230416701-1768858575.png" height="40px" width="120px" alt="验证码" />
+                <img src={config.imageVerificationUrl + '?' + new Date().getTime()} height="40px" onClick={e => e.target.src = e.target.src + '?' + new Date().getTime()} width="120px" style={{cursor: 'pointer'}} alt="验证码" />
               </Col>
             </Row>
           </FormItem>
@@ -133,7 +134,7 @@ class RegistrationForm extends React.Component {
                 )}
               </Col>
               <Col span={10} className="text-right">
-                <Button className="pull-right" style={{width: '120', padding: '4px 0'}} type="primary" disabled={!imgCode.length || timer} size="large" onClick={e => this.fetchPhoneVerifyCode(e)}>{timer ? `${timing} 秒后重新获取` : '获取验证码'}</Button>
+                <Button className="pull-right" style={{width: '120px', padding: '4px 0'}} type="primary" disabled={!imgCode.length || timer} size="large" onClick={e => this.fetchPhoneVerifyCode(e)}>{timer ? `${timing} 秒后重新获取` : '获取验证码'}</Button>
               </Col>
             </Row>
           </FormItem>

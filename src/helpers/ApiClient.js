@@ -3,31 +3,36 @@ import config from '../config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
-function formatUrl(path) {
+function formatUrl(path, local) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
-  if (__SERVER__) {
-    // Prepend host and port of the API server to the path.
-    return 'http://' + config.apiHost + ':' + config.apiPort + adjustedPath;
+  const apiPort = config.apiPort ? ':' + config.apiPort : '';
+  if (local) {
+    // Prepend `/api` to relative URL, to proxy to API server.
+    return '/api' + adjustedPath;
   }
-  // Prepend `/api` to relative URL, to proxy to API server.
-  return '/api' + adjustedPath;
+  // Prepend host and port of the API server to the path.
+  return 'http://' + config.apiHost + apiPort + adjustedPath;
 }
 
 export default class ApiClient {
   constructor(req) {
     methods.forEach((method) =>
-      this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](formatUrl(path));
-
-        if (params) {
-          request.query(params);
-        }
+      this[method] = (path, payload, type) => new Promise((resolve, reject) => {
+        const local = typeof payload === 'string' || typeof type === 'string' ? true : false;
+        const request = superagent[method](formatUrl(path, local));
 
         if (__SERVER__ && req.get('cookie')) {
           request.set('cookie', req.get('cookie'));
         }
-        if (data) {
-          request.send(data);
+
+        if (typeof payload === 'object') {
+          const { params, data } = payload;
+          if (params) {
+            request.query(params);
+          }
+          if (data) {
+            request.send(data);
+          }
         }
 
         request.end((err, { body } = {}) => err ? reject(body || err) : resolve(body));

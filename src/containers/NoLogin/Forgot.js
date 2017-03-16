@@ -8,6 +8,7 @@ const Option = Select.Option;
 
 import * as authActions from 'redux/modules/auth';
 import './NoLogin.less';
+const phoneImage = require('./phone.svg');
 
 @connect(state => ({user: state.auth.user}), authActions)
 class RegistrationForm extends React.Component {
@@ -83,7 +84,7 @@ class RegistrationForm extends React.Component {
                 }
               ],
             })(
-              <Input addonBefore={<Icon type="mobile" />} onBlur={this.authPhone} placeholder="手机号" />
+              <Input prefix={<img src={phoneImage} />} onBlur={this.authPhone} placeholder="手机号" />
             )}
           </FormItem>
           <FormItem style={{marginBottom: '10px'}}>

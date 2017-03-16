@@ -46,8 +46,8 @@ export default class Limit extends Component {
           <div className="limit-form">
             <RadioGroup onChange={this.onChange} value={this.state.type}>
               <Radio style={radioStyle} value={1}>免费</Radio>
-              <Radio style={radioStyle} value={2}>付费观看 <Input placeholder="元" style={{width: '100'}} onChange={(e) => this.setState({value: e.target.value})}/></Radio>
-              <Radio style={radioStyle} value={3}>密码观看 <Input style={{width: '100'}} onChange={this.handlePullStreamChange}/></Radio>
+              <Radio style={radioStyle} value={2}>付费观看 <Input placeholder="元" style={{width: '100px'}} onChange={(e) => this.setState({value: e.target.value})}/></Radio>
+              <Radio style={radioStyle} value={3}>密码观看 <Input style={{width: '100px'}} onChange={this.handlePullStreamChange}/></Radio>
             </RadioGroup>
             <hr className="hr-normal mt20 mb20"/>
             <p className="mt20 text-center"><Button size="large" type="primary" htmlType="submit">提交</Button></p>

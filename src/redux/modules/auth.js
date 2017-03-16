@@ -76,34 +76,34 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     type: LOAD,
-    promise: (client) => client.get('/loadAuth')
+    promise: (client) => client.get('/loadAuth', 'local')
   };
 }
 
 export function login(data) {
   return {
     type: LOGIN,
-    promise: (client) => client.post('/login', { data })
+    promise: (client) => client.post('/login', { data }, 'local')
   };
 }
 
 export function logout() {
   return {
     type: LOGOUT,
-    promise: (client) => client.get('/logout')
+    promise: (client) => client.get('/logout', 'local')
   };
 }
 
 export function checkPhone(phone) {
   return {
     type: CHECKPHONE,
-    promise: (client) => client.post('/check_phone', { data: { phone }})
+    promise: (client) => client.post('/check_phone', { data: { phone }}, 'local')
   };
 }
 
 export function fetchPhoneVerifyCode(data) {
   return {
     type: FETCH_PHONE_VERIFY_CODE,
-    promise: (client) => client.post('/phone_verify_code', { data })
+    promise: (client) => client.post('/phone_verify_code', { data }, 'local')
   };
 }

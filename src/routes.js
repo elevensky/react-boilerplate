@@ -80,7 +80,7 @@ export default (store) => {
       </Route>
 
       {/* <Route path="/" component={Dashboard} onEnter={requireLogin}> */}
-      <Route path="/" component={Dashboard}>
+      <Route path="/" component={Dashboard} onEnter={requireLogin}>
         <IndexRoute component={Lives}/>
         <Route path="/templates" component={Templates} />
         <Route path="/templates/components" component={Components} />
