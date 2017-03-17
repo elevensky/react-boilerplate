@@ -93,8 +93,7 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
         "PORT": 7000,
-        "APIPORT": 7030,
-        "APIHOST": "localhost"
+        "APIHOST": "dev.easyvaas.com"
       }
     },
     "start-dev-api": {
@@ -110,9 +109,9 @@
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
-        "HOST": "123.57.40.185",
-        "PORT": 7000,
-        "APIPORT": 7030
+        "HOST": "dev.easyvaas.com",
+        "NODE_ENV": "development",
+        "PORT": 7000
       }
     },
     "build": {

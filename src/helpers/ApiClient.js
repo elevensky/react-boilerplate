@@ -3,36 +3,35 @@ import config from '../config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
-function formatUrl(path, local) {
+function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
   const apiPort = config.apiPort ? ':' + config.apiPort : '';
-  if (local) {
-    // Prepend `/api` to relative URL, to proxy to API server.
-    return '/api' + adjustedPath;
-  }
+  return '/api' + adjustedPath;
   // Prepend host and port of the API server to the path.
-  return 'http://' + config.apiHost + apiPort + adjustedPath;
+  // return 'http://' + config.apiHost + apiPort + adjustedPath;
+  // return 'https://dev.easyvaas.com' + adjustedPath;
 }
 
 export default class ApiClient {
   constructor(req) {
     methods.forEach((method) =>
-      this[method] = (path, payload, type) => new Promise((resolve, reject) => {
-        const local = typeof payload === 'string' || typeof type === 'string' ? true : false;
-        const request = superagent[method](formatUrl(path, local));
+      this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
+        const request = superagent[method](formatUrl(path));
 
         if (__SERVER__ && req.get('cookie')) {
           request.set('cookie', req.get('cookie'));
         }
 
-        if (typeof payload === 'object') {
-          const { params, data } = payload;
-          if (params) {
-            request.query(params);
-          }
-          if (data) {
-            request.send(data);
-          }
+        if (params) {
+          request.query(params);
+        }
+
+        if (__SERVER__ && req.get('cookie')) {
+          request.set('cookie', req.get('cookie'));
+        }
+
+        if (data) {
+          request.send(data);
         }
 
         request.end((err, { body } = {}) => err ? reject(body || err) : resolve(body));

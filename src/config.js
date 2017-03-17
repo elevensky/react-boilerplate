@@ -9,14 +9,12 @@ const environment = {
   },
   development: {
     isProduction: false,
-    apiHost: 'dev.easyvaas.com/user/yangguozhi/kkuser',
-    apiPort: process.env.APIPORT,
-    host: '123.57.40.185',
-    imageVerificationUrl: 'https://dev.easyvaas.com/user/yanghuan/kkuser/captcha/index/90/30/5'
+    host: 'dev.easyvaas.com',
+    imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
   },
   production: {
     isProduction: true,
-    apiHost: 'easyvaas.com/user/yanghuan/kkuser',
+    apiHost: 'easyvaas.com',
     apiPort: process.env.APIPORT,
     imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
   }

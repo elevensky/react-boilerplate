@@ -76,7 +76,7 @@ export function isLoaded(globalState) {
 export function load() {
   return {
     type: LOAD,
-    promise: (client) => client.get('/login/add', 'local')
+    promise: (client) => client.get('/login', 'local')
   };
 }
 

@@ -19,7 +19,7 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
-const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+const targetUrl = process.env.NODE_ENV === 'development' ? 'http://' + config.apiHost : 'http://' + config.apiHost + ':' + config.apiPort;
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
@@ -34,9 +34,15 @@ app.use(favicon(path.join(__dirname, '..', 'build', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'build')));
 
 // Proxy to API server
-app.use('/api', (req, res) => {
-  proxy.web(req, res, {target: targetUrl});
-});
+if (process.env.NODE_ENV === 'development') {
+  app.use('/user/yangguozhi/kkuser', (req, res) => {
+    proxy.web(req, res, {target: targetUrl});
+  });
+} else {
+  app.use('/api', (req, res) => {
+    proxy.web(req, res, {target: targetUrl});
+  });
+}
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxy.on('error', (error, req, res) => {

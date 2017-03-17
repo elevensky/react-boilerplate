@@ -74,7 +74,7 @@ module.exports = {
     path: assetsPath,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    publicPath: 'http://' + host + ':' + port + '/static/'
+    publicPath: process.env.NODE_ENV === 'development' ? 'https://dev.easyvaas.com/user/user/yanghuan/kkweb/hot-reload/' : 'http://' + host + ':' + port + '/static/'
   },
   module: {
     loaders: [
