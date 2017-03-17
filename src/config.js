@@ -12,11 +12,11 @@ const environment = {
     apiHost: 'dev.easyvaas.com/user/yangguozhi/kkuser',
     apiPort: process.env.APIPORT,
     host: '123.57.40.185',
-    imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
+    imageVerificationUrl: 'https://dev.easyvaas.com/user/yanghuan/kkuser/captcha/index/90/30/5'
   },
   production: {
     isProduction: true,
-    apiHost: 'easyvaas.com/user/yangguozhi/kkuser',
+    apiHost: 'easyvaas.com/user/yanghuan/kkuser',
     apiPort: process.env.APIPORT,
     imageVerificationUrl: 'https://dev.easyvaas.com/user/yangguozhi/kkuser/captcha/index/90/30/5'
   }
