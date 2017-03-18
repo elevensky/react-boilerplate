@@ -100,8 +100,7 @@
       "command": "node ./bin/api.js",
       "env": {
         "NODE_PATH": "./api",
-        "NODE_ENV": "development",
-        "APIPORT": 7030
+        "NODE_ENV": "development"
       }
     },
     "watch-client-dev": {
@@ -109,7 +108,6 @@
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
-        "HOST": "dev.easyvaas.com",
         "NODE_ENV": "development",
         "PORT": 7000
       }

@@ -6,10 +6,10 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 function formatUrl(path) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
   const apiPort = config.apiPort ? ':' + config.apiPort : '';
-  return '/api' + adjustedPath;
+  // return '/api' + adjustedPath;
   // Prepend host and port of the API server to the path.
   // return 'http://' + config.apiHost + apiPort + adjustedPath;
-  // return 'https://dev.easyvaas.com' + adjustedPath;
+  return 'https://dev.easyvaas.com' + adjustedPath;
 }
 
 export default class ApiClient {
